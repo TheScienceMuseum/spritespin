@@ -123,7 +123,7 @@
   }
 
   function bindSimulatedEvent(eName){
-    $(window.document).bind(eName + '.' + name, function(e){
+    $(window.document).on(eName + '.' + name, function(e){
       simulateEvent('document' + eName, e);
     });
   }
@@ -201,7 +201,7 @@
   // The SpriteSpin namespace is attached to the event name
   function bind(target, event, func){
     if (func) {
-      target.bind(event + '.' + name, function(e){
+      target.on(event + '.' + name, function(e){
         func.apply(target, [e, target.spritespin('data')]);
       });
     }
@@ -210,7 +210,7 @@
 
   // Unbinds all SpriteSpin events from given target element
   function unbind(target){
-    target.unbind('.' + name);
+    target.off('.' + name);
   }
 
   // Loads a set of image files. Yields the progress and the completion of the load operation.
